@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>回南天的雾</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="stage">
+    <img id="bg" class="layer" alt="">
+    <img id="char" class="layer" alt="">
+    <img id="cg" class="layer" alt="">
+    <div id="center"></div>
+    
+    <div id="sys-menu">
+      <button id="sys-save">存档</button>
+      <button id="sys-load">读档</button>
+      <button id="sys-log">回看</button>
+    </div>
+    
+    <div id="log-panel" class="overlay">
+      <h3>历史记录</h3>
+      <div id="log-content"></div>
+      <button class="btn-close" onclick="document.getElementById('log-panel').style.display='none'">关闭</button>
+    </div>
+    
+    <!-- 【独立的存档面板】 -->
+    <div id="save-panel" class="overlay" style="background: rgba(50, 10, 10, 0.9);">
+      <h3>仅限存档</h3>
+      <div class="save-slots">
+        <button onclick="saveGame(1)">存档位 1</button>
+        <button onclick="saveGame(2)">存档位 2</button>
+        <button onclick="saveGame(3)">存档位 3</button>
+      </div>
+      <button class="btn-close" onclick="document.getElementById('save-panel').style.display='none'">关闭</button>
+    </div>
+
+    <!-- 【独立的读档面板】 -->
+    <div id="load-panel" class="overlay" style="background: rgba(10, 30, 50, 0.9);">
+      <h3>仅限读档</h3>
+      <div class="save-slots">
+        <button onclick="loadGame(1)">读档位 1</button>
+        <button onclick="loadGame(2)">读档位 2</button>
+        <button onclick="loadGame(3)">读档位 3</button>
+      </div>
+      <button class="btn-close" onclick="document.getElementById('load-panel').style.display='none'">关闭</button>
+    </div>
+
+    <div id="textbox">
+      <div id="name"></div>
+      <div id="text"></div>
+    </div>
+    
+    <div id="menu"></div>
+
+    <div id="title-screen" class="full-screen-ui">
+      <h1 class="game-title">回南天的雾</h1>
+      <p class="game-subtitle">The Fog of Huinan</p>
+      <div class="title-buttons">
+        <button onclick="startNewGame()">开始游戏</button>
+        <button onclick="document.getElementById('load-panel').style.display='flex'">读取进度</button>
+        <button onclick="showGallery()">结局收集</button>
+      </div>
+    </div>
+
+        <!-- 结局收集界面 -->
+    <div id="gallery-screen" class="full-screen-ui" style="display:none;">
+      <h2>结局收集</h2>
+      <div class="gallery-grid">
+        <div class="gallery-slot" id="slot-true">???</div>
+        <div class="gallery-slot" id="slot-yandere">???</div>
+        <div class="gallery-slot" id="slot-bad_run">???</div>
+        <div class="gallery-slot" id="slot-bad_well">???</div>
+      </div>
+      <button class="btn-close" onclick="document.getElementById('gallery-screen').style.display='none'">返回</button>
+    </div>
+
+    <div id="ending-screen" class="full-screen-ui" style="display:none;">
+      <h2 id="ending-title">结局名称</h2>
+      <p id="ending-desc">结局描述</p>
+      <button onclick="showTitle()" class="btn-close">返回标题画面</button>
+    </div>
+
+  </div>
+  
+  <!-- 版本号改成 8888，彻底击穿缓存 -->
+  <script src="js/state.js?v=8888"></script>
+  <script src="js/story.js?v=8888"></script>
+  <script src="js/engine.js?v=8888"></script>
+</body>
+</html>
